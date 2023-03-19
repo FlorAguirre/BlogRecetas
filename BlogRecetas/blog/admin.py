@@ -3,22 +3,27 @@ from .models import Category, Article
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    readonly_fields = ('created_at',)
+    search_fields = ('name'),
+    readonly_fields = ('created_at'),
+    
+
+class ArticleAdmin(admin.ModelAdmin):
+    autocomplete_fields = ['categories']
 
 # class ArticleAdmin(admin.ModelAdmin):
-#     readonly_fields = ('user','created_at', 'updated_at')
+#      readonly_fields = ('user','created_at', 'updated_at')
 
 # Para que se pueda mostrar el usuario, sin tener que editarlo. Que tome el usuario que haya iniciado sesión como creador del artículo
 
-    # def save_model(self,request, obj, form, change):
-    #     if not obj.user_id:
-    #         obj.user_id = request.user.id
+# def save_model(self,request, obj, form, change):
+#         if not obj.user_id:
+#             obj.user_id = request.user.id
         
-    #     obj.save()
+#         obj.save()
 
 
 
 # Register your models here.
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Article)
+admin.site.register(Article, ArticleAdmin)
 

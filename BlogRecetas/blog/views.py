@@ -1,8 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from blog.models import Category, Article
 from django.shortcuts import render,HttpResponse, redirect
-from blog.forms import FormArticle
+from blog.forms import FormArticle,ArtForm
 from django.contrib import messages
+from django.core.files.storage import FileSystemStorage
+from django.core.files.base import ContentFile
+from django.core.files.uploadedfile import TemporaryUploadedFile, InMemoryUploadedFile, UploadedFile
+
 
 
 # Create your views here.
@@ -54,13 +58,17 @@ def save_article(request):
         title = request.POST['title']
         content = request.POST['content']
         public = request.POST['public']
+    
+
 
 
 
         articulo = Article(
             title = title,
             content = content,
-            public = public
+            public = public,
+
+           
           
         )
 
@@ -78,40 +86,37 @@ def create_article(request):
 
 
 def create_full_article(request):
+    articulo = None # Crear la variable articulo fuera del bloque condicional
+    if request.method == "POST":
+        formulario = ArtForm(request.POST)
+        if formulario.is_valid():
+            # Extraer los campos del formulario
+            title = formulario.cleaned_data.get('title')
+            content = formulario.cleaned_data.get('content')
+            public = formulario.cleaned_data.get('public')
+            category_ids = request.POST.getlist('categories') # obtener la lista de los ids de categorías seleccionadas
+            categories = Category.objects.filter(id__in=category_ids)
 
-     if(request.method == "POST"):
+  
 
-         formulario = FormArticle(request.POST)
+            # Crear el articulo
+            articulo = Article(
+                title = title,
+                content = content,
+                public = public,
+                
+            )
+            articulo.save()
+            articulo.categories.set(categories)
 
-         if(formulario.is_valid()):
-             data_form = formulario.cleaned_data
-
-             title = data_form.get('title')
-             content = data_form['content']
-             public = data_form['public']
-
-             articulo = Article(
-                 title = title,
-                 content = content,
-                 public = public,
-         ) 
-         articulo.save()
-
-         # Crear mensaje flash (sesión que solo se muestra 1 vez)
-
-         messages.success(request,f'Se ha guardado correctamente el artículo {articulo.id}. {articulo.title}')
-        
-         return redirect('articulos') 
-
-         #return HttpResponse(articulo.title + ' ' + articulo.content+ ' ' + str(articulo.public))
-     else:
-         formulario = FormArticle()
-
-     return render(request, 'articles/create_full_article.html',{
-         'form' : formulario
-     }
-        
-     )
+            # Crear mensaje flash (sesión que solo se muestra 1 vez)
+            messages.success(request,f'Se ha guardado correctamente la receta: {articulo.title}')
+            return redirect('list_articles')
+    else:
+        formulario = ArtForm()
+    return render(request, 'articles/create_full_article.html',{
+        'form' : formulario
+    })
 
 
 def busqueda_articulo(request):
@@ -135,4 +140,11 @@ def buscar(request):
     return HttpResponse(respuesta)
     
 
+"""
+class RecetaCreateView(CreateView):
+        model = Article
+        template_name = 'articles/create_article.html'
+        form_class = ArtForm
+        success_url = '.'
 
+        """

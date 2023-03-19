@@ -8,8 +8,9 @@ urlpatterns = [
     path('categoria/<int:category_id>', views.category, name = 'category'),
     path('articulo/<int:article_id>', views.article, name = 'article'),
     path('save-article/', views.save_article, name = 'save'),
-    path('create-article/', views.create_article, name = 'create'),
+    #path('create-article/', views.RecetaCreateView.as_view(), name = 'create'),
     path('create-full-article/', views.create_full_article, name = 'create_full'),
     path('buscar-articulo/', views.busqueda_articulo, name = 'buscar_articulo'),
     path('buscar/', views.buscar, name= 'buscar'),
+
 ]

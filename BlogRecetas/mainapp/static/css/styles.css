@@ -205,3 +205,11 @@ nav > ul > li:hover > ul > li:hover a{
   background: #1f7e58;
  
 }
+
+.message{
+  padding: 20px;
+  background:#1f7e58;
+  color:white;
+  text-align: center;
+  margin-bottom: 10px;
+}

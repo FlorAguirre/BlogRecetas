@@ -6,6 +6,13 @@
 
 {%block content %}
     <h1 class ="title">{{title}}</h1>
+    {%if messages %}
+        {%for message in messages%}
+        <div class="message">
+            {{message}}
+        </div>
+        {% endfor %}
+    {% endif%}
 
     {% include 'articles/articles.html' %}
 {% endblock %}
