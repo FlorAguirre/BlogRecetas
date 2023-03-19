@@ -1,6 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -23,7 +23,7 @@ class Article(models.Model):
     content = RichTextField(verbose_name='Contenido')
     image = models.ImageField(default = 'null', verbose_name='Imagen',upload_to="articles")
     public = models.BooleanField(verbose_name='Publicado?')
-    user = models.ForeignKey(User, editable = False, verbose_name= 'Usuario', on_delete = models.CASCADE) # Se borra el registro que esta vinculado con el usuario - on_delete = models.CASCADE
+    #user = models.ForeignKey(User, editable = False, verbose_name= 'Usuario', on_delete = models.CASCADE) # Se borra el registro que esta vinculado con el usuario - on_delete = models.CASCADE
     categories = models.ManyToManyField(Category, verbose_name='Categorías', blank= True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creado el')
     updated_at = models.DateTimeField(auto_now= True, verbose_name='Editado el')

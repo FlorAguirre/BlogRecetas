@@ -60,34 +60,63 @@
       </nav> {% endcomment %}
 
       <header class="p-2 text-bg-dark">
-             
+                 
         <div class="container">
-      
+   
           <div class="d-flex flex-wrap align-items-center justify-content-start ">
-          
+             
       <a href="/" class=" text-light text-decoration-none ">
               <img class="logo" src="{% static 'images/logo2.png' %}"></img>
             </a> 
+ <nav>  
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-start mb-md-0">
               <li><a href="{% url 'index' %}" class="nav-link px-2 text-light">Inicio</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle categ" href="{% url 'list_articles' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                 Categorías
+                </a>
+                <ul class="dropdown-menu">
+                  {% for category in categories %}
+                  <li><a  href="{% url 'category' category.0 %}">{{category.1}}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+          {% comment %} <li>
+                <a href="{% url 'list_articles' %}" class="nav-link px-2 text-light">Categorías</a>
+                <ul>
+                  <li>
+                    <a href="{% url 'index' %}" class="nav-link px-2 text-light">Categoría 1</a>
+                    <a href="{% url 'index' %}" class="nav-link px-2 text-light">Categoría 2</a>
+                    <a href="{% url 'index' %}" class="nav-link px-2 text-light">Categoría 3</a>
+                  </li>
+                </ul>
+              </li>  {% endcomment %}
 
               {% for page in pages %}
               <li><a href="{% url 'page' page.2 %}" class="nav-link px-2 text-white">{{page.1}}</a></li>
               {% endfor %}
+
+            
             </ul>
-    
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          </nav> 
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 boton-search" role="search">
               <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+             
+                 <button type="button" class="btn btn-outline-light me-2 boton">Buscar</button>
+             
             </form>
-    
-            <div class="text-end">
+ 
+            {% comment %} <div class="text-end">
                 <button type="button" class="btn btn-outline-light me-2">Iniciar Sesión</button>
                 <button type="button" class="btn btn-warning">Registrarse</button>
                 
-            </div>
-          </div>
+            </div> {% endcomment %}
+          
+          </div>  
+     
         </div>
-      </header>
+   
+      </header> 
 {% comment %}       
     <div class="barra">
         <span class="esquina-izquierda"></span>

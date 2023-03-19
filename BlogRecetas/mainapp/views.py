@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from blog.models import Category, Article
+from django.shortcuts import render,HttpResponse, redirect
 
 # Create your views here.
 
@@ -11,3 +13,4 @@ def about(request):
     return render(request,'mainapp/about.html',{
         'title' : 'Sobre nosotros'
     })
+

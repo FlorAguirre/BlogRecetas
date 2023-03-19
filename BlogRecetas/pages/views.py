@@ -11,3 +11,4 @@ def page(request, slug):
         "page" : page
     })
 
+

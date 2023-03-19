@@ -59,6 +59,64 @@ img{
   width: 300px;
 }
 
+ nav > ul > li > ul {
+  display:none;
+  position: absolute;
+  color:black ;
+  text-align: left;
+  width: 160px;
+  box-shadow: 0px 2px 2px rgb(58, 57, 57) ;
+} 
+
+nav > ul > li:hover > ul{
+  display:block;
+  color:black ;
+  margin: 0px;
+  list-style: none;
+
+}
+
+nav > ul > li:hover > ul > li{
+  background: #F2F1F0;
+  border-bottom: 1px solid #d6d6d6;
+  padding: 8px;
+  line-height: 25px;
+  font-size: 13px;
+} 
+
+nav > ul > li:hover > ul > li a{
+ color:#666 ;
+} 
+
+nav > ul > li:hover > ul > li:hover{
+  background-color: #1f7e58 ;
+ } 
+
+ 
+nav > ul > li:hover > ul > li:hover a{
+  display: block;
+  color:white ;
+ } 
+
+
+.categ{
+  color:white;
+}
+
+.boton-search{
+  display: flex;
+  flex-direction: row;
+  gap:20px;
+  height: 50px;
+  width: 350px;
+  margin-left: 20px;
+}
+
+.boton{
+  height: 50px;
+  width: 150px;
+}
+
 /* 
  ul li a{
   display: block;
@@ -77,3 +135,73 @@ img{
   color: white;
   transition: all 300ms;
 } */
+
+.box a {
+    color: #444;
+}
+
+.box a:hover {
+  color: #1f7e58;
+}
+
+.box .image{
+    
+    float:left;
+    margin-right: 40px;
+}
+
+.box .image img{
+  width:100%;
+  
+}
+
+.box form{
+  width: 35%;
+}
+
+.box form input,
+.box form label{
+  display:block;
+  padding:5px;
+  padding-left: 0px;
+}
+
+.box form input[type="text"],
+.box form textarea{
+  width:90%;
+  margin-bottom: 10px;
+
+} 
+
+.box form input[type="text"],
+.box form textarea,
+.box select{
+  width:90%;
+  margin-bottom: 10px;
+
+} 
+
+.box select{
+  width:100px;
+  padding: 5px;
+}
+
+.box form input[type="submit"],
+.box form input[type="button"],
+.box form button{
+  padding:10px;
+  margin-top:5px;
+  background-color: #2ba977;
+  color: white;
+  font-weight: bold;
+  border:1px solid black;
+  transition: 300ms all;
+}
+
+.box form input[type="submit"]:hover,
+.box form input[type="button"]:hover,
+.box form button:hover{
+  cursor:pointer;
+  background: #1f7e58;
+ 
+}
