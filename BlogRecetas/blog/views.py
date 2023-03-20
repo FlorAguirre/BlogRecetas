@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from blog.models import Category, Article
 from django.shortcuts import render,HttpResponse, redirect
-from blog.forms import ArtForm
+from blog.forms import ArtForm, CatForm
 from django.contrib import messages
 
 
@@ -19,6 +19,15 @@ def articles(request):
         'articles' : articles,
     })
 
+
+def categories(request):
+
+    categories = Category.objects.all()
+    
+    return render(request,'categories/listcategory.html',{
+        'title' : 'Categorías',
+        'categories' : categories,
+    })
 
 def category(request, category_id):
 
@@ -147,3 +156,36 @@ class RecetaCreateView(CreateView):
         success_url = '.'
 
         """
+
+
+def create_category(request):
+    categoria = None # Crear la variable articulo fuera del bloque condicional
+    if request.method == "POST":
+        formulario = CatForm(request.POST)
+        if formulario.is_valid():
+            # Extraer los campos del formulario
+            name = formulario.cleaned_data.get('name')
+            description = formulario.cleaned_data.get('description')
+            
+           
+
+  
+
+            # Crear el articulo
+            categoria = Category(
+                name = name,
+                description = description,
+              
+                
+            )
+            categoria.save()
+           
+
+            # Crear mensaje flash (sesión que solo se muestra 1 vez)
+            messages.success(request,f'Se ha guardado correctamente la receta: {categoria.name}')
+            return redirect('list_categorias')
+    else:
+        formulario = CatForm()
+    return render(request, 'categories/create_category.html',{
+        'form' : formulario
+    })

@@ -12,5 +12,7 @@ urlpatterns = [
     path('create-full-article/', views.create_full_article, name = 'create_full'),
     path('buscar-articulo/', views.busqueda_articulo, name = 'buscar_articulo'),
     path('buscar/', views.buscar, name= 'buscar'),
-
+    path('categorias/', views.categories, name = 'list_categorias'),
+    path('create-category/', views.create_category, name= 'create_category'),
+    
 ]

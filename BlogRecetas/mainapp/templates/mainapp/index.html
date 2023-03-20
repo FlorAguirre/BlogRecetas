@@ -8,6 +8,6 @@
 {%block content %}
     <h1>{{title}}</h1>
     <button> <a href="{% url 'create_full' %}">Crear Receta </a></button>
-    <button> Crear Categoría </button>
+    <button> <a href="{% url 'create_category' %}">Crear Categoría </a> </button>
     <button> <a href="{% url 'buscar_articulo' %}">Buscar Receta </a></button>
 {% endblock %}
