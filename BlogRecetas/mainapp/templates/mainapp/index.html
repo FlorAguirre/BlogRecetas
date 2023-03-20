@@ -10,14 +10,14 @@
     <h1 class="title-index">{{title}}</h1>
     <div class= "botones">
         <div>
-        <button class="button-crear"> <a class= "a-crear" href="{% url 'create_full' %}">Crear Receta </a></button>
-        <button class="button-crear"> <a class= "a-crear" href="{% url 'create_category' %}">Crear Categoría </a> </button>
-        <button class="button-crear"> <a class= "a-crear" href="{% url 'create_product' %}">Crear Producto </a> </button>
+        <a class= "a-crear" href="{% url 'create_full' %}"><button class="button-crear"> Crear Receta </button> </a>
+        <a class= "a-crear" href="{% url 'create_category' %}"><button class="button-crear"> Crear Categoría  </button></a>
+        <a class= "a-crear" href="{% url 'create_product' %}"><button class="button-crear"> Crear Producto  </button></a>
         </div>
         <br>
 
-        <button class="button-buscar"> <a class= "a-crear" href="{% url 'buscar_articulo' %}">Buscar Receta </a></button>
-        <button class="button-buscar"> <a class= "a-crear" href="{% url 'buscar_producto' %}">Buscar Producto </a></button>
+        <a class= "a-crear" href="{% url 'buscar_articulo' %}"><button class="button-buscar"> Buscar Receta </button></a>
+        <a class= "a-crear" href="{% url 'buscar_producto' %}"><button class="button-buscar"> Buscar Producto </button></a>
     </div>
 </body>
 {% endblock %}
