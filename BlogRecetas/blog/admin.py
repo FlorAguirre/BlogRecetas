@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Article
+from .models import Category, Article, Product
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -9,6 +9,10 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class ArticleAdmin(admin.ModelAdmin):
     autocomplete_fields = ['categories']
+
+
+class ProductAdmin(admin.ModelAdmin):
+    readonly_fields = ('created_at'),
 
 # class ArticleAdmin(admin.ModelAdmin):
 #      readonly_fields = ('user','created_at', 'updated_at')
@@ -26,4 +30,5 @@ class ArticleAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Article, ArticleAdmin)
+admin.site.register(Product, ProductAdmin)
 

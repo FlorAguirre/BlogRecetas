@@ -37,3 +37,19 @@ class Article(models.Model):
     def __str__(self):
         return self.title
     
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Nombre')
+    description = models.CharField(max_length=255,verbose_name='Descripción')
+    price = models.IntegerField(default = 0, verbose_name='Precio')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creado el')
+
+    class Meta:
+        verbose_name = 'Producto'
+        verbose_name_plural = 'Productos'
+        ordering = ['-created_at']
+
+    
+    def __str__(self):
+        return self.name

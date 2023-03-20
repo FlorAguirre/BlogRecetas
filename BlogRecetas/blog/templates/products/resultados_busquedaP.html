@@ -1,0 +1,27 @@
+
+{% extends 'layouts/layout.html'%}
+
+
+
+{%block title %}  Resultados de Busqueda </p>{% endblock %}
+
+
+{%block content %}
+
+
+<p> Estamos buscando el producto :{{name}}
+{% if productos %}
+
+<ul> 
+    {% for producto in productos%}
+        <li> Nombre del Producto: {{producto.name}} </li>
+        <li> Descripción: {{producto.description}} </li>
+        <li> Precio: {{producto.price}} </li>
+<hr>
+    {% endfor %}
+
+
+</ul>
+
+{% endif %}
+{% endblock %}

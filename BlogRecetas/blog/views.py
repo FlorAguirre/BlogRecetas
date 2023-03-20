@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from blog.models import Category, Article
+from blog.models import Category, Article, Product
 from django.shortcuts import render,HttpResponse, redirect
-from blog.forms import ArtForm, CatForm
+from blog.forms import ArtForm, CatForm, ProdForm
 from django.contrib import messages
 
 
@@ -9,6 +9,9 @@ from django.contrib import messages
 
 
 # Create your views here.
+
+#######  LISTAR RECETAS, CATEGORIAS Y PRODUCTOS #######
+
 
 def articles(request):
 
@@ -27,6 +30,15 @@ def categories(request):
     return render(request,'categories/listcategory.html',{
         'title' : 'Categorías',
         'categories' : categories,
+    })
+
+def products(request):
+
+    products = Product.objects.all()
+    
+    return render(request,'products/listproducts.html',{
+        'title' : 'Productos',
+        'products' : products,
     })
 
 def category(request, category_id):
@@ -49,6 +61,14 @@ def article(request, article_id):
     })
 
 
+def product(request, product_id):
+
+    product = get_object_or_404(Product, id =product_id)
+
+    return render(request, 'products/product.html',{
+        'product' : product
+    })
+
 
 
 # def crear_articulo(request,title,content,public):
@@ -57,6 +77,8 @@ def article(request, article_id):
 #         content = content,
 #         public = public
 #     )
+
+#######  GUARDAR RECETA #######
 
 
 def save_article(request):
@@ -88,10 +110,11 @@ def save_article(request):
 
     
 
-def create_article(request):
+# def create_article(request):
 
-    return render(request,'articles/create_article.html')
+#     return render(request,'articles/create_article.html')
 
+# #######  CREAR RECETA, CATEGORIA Y PRODUCTO #######
 
 def create_full_article(request):
     articulo = None # Crear la variable articulo fuera del bloque condicional
@@ -127,37 +150,6 @@ def create_full_article(request):
     })
 
 
-def busqueda_articulo(request):
-    return render(request,'articles/buscar_articulo.html')
-
-
-
-def buscar(request):
-
-    if request.POST['title']:
-
-        articulo = request.POST['title']
-        articulos = Article.objects.filter(title__icontains= articulo)
-
-        return render(request,"articles/resultados_busqueda.html",{"articulos":articulos})
-    
-    else:
-        respuesta = "No enviaste datos"
-
-
-    return HttpResponse(respuesta)
-    
-
-"""
-class RecetaCreateView(CreateView):
-        model = Article
-        template_name = 'articles/create_article.html'
-        form_class = ArtForm
-        success_url = '.'
-
-        """
-
-
 def create_category(request):
     categoria = None # Crear la variable articulo fuera del bloque condicional
     if request.method == "POST":
@@ -189,3 +181,86 @@ def create_category(request):
     return render(request, 'categories/create_category.html',{
         'form' : formulario
     })
+
+
+
+def create_product(request):
+    producto = None # Crear la variable articulo fuera del bloque condicional
+    if request.method == "POST":
+        formulario = ProdForm(request.POST)
+        if formulario.is_valid():
+            # Extraer los campos del formulario
+            name = formulario.cleaned_data.get('name')
+            description = formulario.cleaned_data.get('description')
+            price = formulario.cleaned_data.get('price')
+           
+
+  
+
+            # Crear el articulo
+            producto = Product(
+                name = name,
+                description = description,
+                price = price
+              
+                
+            )
+            producto.save()
+           
+
+            # Crear mensaje flash (sesión que solo se muestra 1 vez)
+            messages.success(request,f'Se ha guardado correctamente la receta: {producto.name}')
+            return redirect('list_productos')
+    else:
+        formulario = ProdForm()
+    return render(request, 'products/create_product.html',{
+        'form' : formulario
+    })
+
+
+
+
+#######  BUSCAR RECETA Y PRODUCTO #######
+
+def busqueda_articulo(request):
+    return render(request,'articles/buscar_articulo.html')
+
+
+
+def buscar(request):
+
+    if request.POST['title']:
+
+        articulo = request.POST['title']
+        articulos = Article.objects.filter(title__icontains= articulo)
+
+        return render(request,"articles/resultados_busqueda.html",{"articulos":articulos})
+    
+    else:
+        respuesta = "No enviaste datos"
+
+
+    return HttpResponse(respuesta)
+    
+
+def busqueda_producto(request):
+    return render(request,'products/buscar_producto.html')
+
+
+
+def buscar_p(request):
+
+    if request.POST['name']:
+
+        producto = request.POST['name']
+        productos = Product.objects.filter(name__icontains= producto)
+
+        return render(request,"products/resultados_busquedaP.html",{"productos":productos})
+    
+    else:
+        respuesta = "No enviaste datos"
+
+
+    return HttpResponse(respuesta)
+    
+

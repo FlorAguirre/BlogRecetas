@@ -1,5 +1,5 @@
 from django import forms
-from .models import Article, Category
+from .models import Article, Category, Product
 
 class FormArticle(forms.Form):
 
@@ -43,5 +43,17 @@ class CatForm(forms.ModelForm):
         fields = (
             'name',
             'description',
+            
+        )
+
+
+class ProdForm(forms.ModelForm):
+
+    class Meta:
+        model= Product
+        fields = (
+            'name',
+            'description',
+            'price',
             
         )
