@@ -218,6 +218,8 @@ nav > ul > li:hover > ul > li:hover a{
   height:50px;
   background-color: #2ba977; 
   margin-left: 15px;
+  color:white;
+  font-weight: bold;
   
 }
 
@@ -238,6 +240,8 @@ nav > ul > li:hover > ul > li:hover a{
   height:50px;
   background-color: #2876cf; 
   margin-left: 15px;
+  color:white;
+  font-weight: bold;
   
 }
 
