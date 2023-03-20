@@ -66,13 +66,14 @@
           <div class="d-flex flex-wrap align-items-center justify-content-start ">
              
       <a href="/" class=" text-light text-decoration-none ">
-              <img class="logo" src="{% static '/images/logo2.png' %}"></img>
+              <img class="logo" src="{% static 'images/logo2.png' %}">
             </a> 
  <nav>  
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-start mb-md-0">
               <li><a href="{% url 'index' %}" class="nav-link px-2 text-light">Inicio</a></li>
               <li><a href="{% url 'list_categorias' %}" class="nav-link px-2 text-light">Categorías</a></li>
               <li><a href="{% url 'list_articles' %}" class="nav-link px-2 text-light">Recetas</a></li>
+
               {% comment %} <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle categ" href="{% url 'list_articles' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                  Categorías
