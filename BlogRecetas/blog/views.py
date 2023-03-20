@@ -174,7 +174,7 @@ def create_category(request):
            
 
             # Crear mensaje flash (sesión que solo se muestra 1 vez)
-            messages.success(request,f'Se ha guardado correctamente la receta: {categoria.name}')
+            messages.success(request,f'Se ha guardado correctamente la categoría: {categoria.name}')
             return redirect('list_categorias')
     else:
         formulario = CatForm()
@@ -209,7 +209,7 @@ def create_product(request):
            
 
             # Crear mensaje flash (sesión que solo se muestra 1 vez)
-            messages.success(request,f'Se ha guardado correctamente la receta: {producto.name}')
+            messages.success(request,f'Se ha guardado correctamente el producto: {producto.name}')
             return redirect('list_productos')
     else:
         formulario = ProdForm()

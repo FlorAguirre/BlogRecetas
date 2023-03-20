@@ -5,6 +5,8 @@ PARA EL FUNCIONAMIENTO CORRECTO DE LA PAGINA WEB SE DEBERA DESCARGAR POR TERMINA
 - CKEDITOR (pip install django-ckeditor )
 - PILLOW (Python -m pip install Pillow)
 
+** Hay dos videos a modo explicativo de como funciona la pagina. Los videos son: "Crear" y "Buscar" **
+
 ## Descripción
 
 El blog esta dedicado a la creación de recetas como artículos, categorías y productos. El usuario podrá cargar recetas, productos o categorías y luego podrá también realizar una busqueda de productos y recetas.
@@ -44,4 +46,6 @@ El blog esta dedicado a la creación de recetas como artículos, categorías y p
 - Para Recetas
 
 5. Readme que indique el orden en el que se prueban las cosas y/o donde están las funcionalidades: Hecho.
+
+
 

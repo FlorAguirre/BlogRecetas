@@ -1,6 +1,6 @@
 *{
   text-decoration: none !important;
-  
+
 }
 .form-control-dark {
     border-color: var(--bs-gray);
@@ -176,13 +176,13 @@ nav > ul > li:hover > ul > li:hover a{
 .box form input[type="text"],
 .box form textarea,
 .box select{
-  width:90%;
+  width:100%;
   margin-bottom: 10px;
 
 } 
 
 .box select{
-  width:100px;
+  width:150px;
   padding: 5px;
 }
 
@@ -212,4 +212,69 @@ nav > ul > li:hover > ul > li:hover a{
   color:white;
   text-align: center;
   margin-bottom: 10px;
+}
+
+.button-crear{
+  height:50px;
+  background-color: #2ba977; 
+  margin-left: 15px;
+  
+}
+
+.a-crear{
+  color:white !important;
+  font-weight: bold;
+  
+}
+
+.botones{
+  
+  
+  margin-top: 40px;
+}
+
+
+.button-buscar{
+  height:50px;
+  background-color: #2876cf; 
+  margin-left: 15px;
+  
+}
+
+.body-back{
+  background-image: url(../images/MM-262.jpg) ;
+  background-size: cover;
+}
+
+
+.title-index{
+  color:white;
+}
+
+.body-back-crearArt{
+  background-image: url(../../../media/articles/textura-08.jpg) ;
+  background-size: cover;
+}
+
+.body-back-crearCat{
+  background-image: url(../../../media/articles/textura-08.jpg) ;
+  background-size: cover;
+}
+
+.body-list{
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  background-size: cover;
+}
+
+.body-list-cat{
+  background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
+
+}
+
+.body-list-prod{
+height:1500px;
+background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+background-repeat: no-repeat;
+
+
 }
